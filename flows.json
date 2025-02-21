@@ -1,0 +1,86 @@
+[
+    {
+        "id": "fb3e1a39e05e3c40",
+        "type": "inject",
+        "z": "6272dbf716455b80",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"printer-uri\":\"http://15.4.63.130/ipp/printer\",\"job-id\":160,\"requesting-user-name\":\"User123\"}",
+        "payloadType": "json",
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "96bf4b2cca89c566"
+            ]
+        ]
+    },
+    {
+        "id": "0c5123b38db29284",
+        "type": "exec",
+        "z": "6272dbf716455b80",
+        "command": "node \"C:\\Users\\TuHa738\\canc_job.js\"",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 650,
+        "y": 240,
+        "wires": [
+            [
+                "706afda6c984e889"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "96bf4b2cca89c566",
+        "type": "function",
+        "z": "6272dbf716455b80",
+        "name": "function 42",
+        "func": "let inputData = msg.payload;\n\nif (typeof inputData !== \"string\") {\n    inputData = JSON.stringify(inputData);\n}\n\n// Debugging: Show formatted output before sending\n//node.warn(\"📤 Sending to Exec Node: \" + inputData);\n\n// Properly escape quotes to prevent syntax errors in shell commands\ninputData = inputData.replace(/\"/g, '\\\\\"');\n\nmsg.payload = inputData;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 240,
+        "wires": [
+            [
+                "0c5123b38db29284"
+            ]
+        ]
+    },
+    {
+        "id": "706afda6c984e889",
+        "type": "debug",
+        "z": "6272dbf716455b80",
+        "name": "debug 67",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 320,
+        "wires": []
+    }
+]
