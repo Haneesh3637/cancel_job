@@ -1,8 +1,16 @@
 [
     {
+        "id": "66496b0cf2e3c670",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "fb3e1a39e05e3c40",
         "type": "inject",
-        "z": "6272dbf716455b80",
+        "z": "66496b0cf2e3c670",
         "name": "",
         "props": [
             {
@@ -27,7 +35,7 @@
     {
         "id": "0c5123b38db29284",
         "type": "exec",
-        "z": "6272dbf716455b80",
+        "z": "66496b0cf2e3c670",
         "command": "node \"C:\\Users\\TuHa738\\canc_job.js\"",
         "addpay": "payload",
         "append": "",
@@ -49,7 +57,7 @@
     {
         "id": "96bf4b2cca89c566",
         "type": "function",
-        "z": "6272dbf716455b80",
+        "z": "66496b0cf2e3c670",
         "name": "function 42",
         "func": "let inputData = msg.payload;\n\nif (typeof inputData !== \"string\") {\n    inputData = JSON.stringify(inputData);\n}\n\n// Debugging: Show formatted output before sending\n//node.warn(\"📤 Sending to Exec Node: \" + inputData);\n\n// Properly escape quotes to prevent syntax errors in shell commands\ninputData = inputData.replace(/\"/g, '\\\\\"');\n\nmsg.payload = inputData;\nreturn msg;\n",
         "outputs": 1,
@@ -58,8 +66,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 240,
+        "x": 310,
+        "y": 200,
         "wires": [
             [
                 "0c5123b38db29284"
@@ -69,7 +77,7 @@
     {
         "id": "706afda6c984e889",
         "type": "debug",
-        "z": "6272dbf716455b80",
+        "z": "66496b0cf2e3c670",
         "name": "debug 67",
         "active": true,
         "tosidebar": true,
